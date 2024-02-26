@@ -26,7 +26,7 @@ public class EmailService {
             log.info("toEmail: {} subJect: {} emailMessage: {}", emailDTO.to(), emailDTO.subject(), emailDTO.message());
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setFrom(emailDTO.from());
-            mailMessage.setTo(emailDTO.to());
+            mailMessage.setTo(emailDTO.to().toLowerCase());
             mailMessage.setSubject(emailDTO.subject());
             mailMessage.setText(emailDTO.message());
             mailSender.send(mailMessage);
@@ -38,11 +38,11 @@ public class EmailService {
     @Async
     public void sendEmailMimeMessageHelper(EmailDTO emailDTO) {
         try {
-            log.info("toEmail: {} subJect: {} emailMessage: {}", emailDTO.to(), emailDTO.subject(), emailDTO.message());
+            log.info("EmailPara: {} Titulo: {} Mensagem: {}", emailDTO.to(), emailDTO.subject(), emailDTO.message());
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message);
-            helper.setFrom("lebuffet02@gmail.com", "Lucas Buffet");
-            helper.setTo(emailDTO.to());
+            helper.setFrom("*******@gmail.com", "Lucas Buffet");
+            helper.setTo(emailDTO.to().toLowerCase());
             helper.setSubject(emailDTO.subject());
             helper.setText(emailDTO.message());
             mailSender.send(message);

@@ -4,6 +4,5 @@ public record EmailDTO(
         String from,
         String to,
         String message,
-        String subject,
-        String attachment
+        String subject
 ) {}

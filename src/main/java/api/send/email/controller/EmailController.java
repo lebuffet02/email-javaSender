@@ -17,12 +17,12 @@ public class EmailController {
     @PostMapping
     public ResponseEntity<?> simpleMailMessage(@RequestBody EmailDTO emailDTO) {
         service.sendEmailSimpleMailMessage(emailDTO);
-        return ResponseEntity.status(220).build();
+        return ResponseEntity.status(200).build();
     }
 
-    @PostMapping
+    @PostMapping("/mime")
     public ResponseEntity<?> mimeMessageHelper(@RequestBody EmailDTO emailDTO) {
         service.sendEmailMimeMessageHelper(emailDTO);
-        return ResponseEntity.status(220).build();
+        return ResponseEntity.status(200).build();
     }
 }
